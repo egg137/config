@@ -5,7 +5,7 @@ local function createDesktopShortcut()
   local shortcut_name = filename .. ".lnk"
 
   local ps = io.popen("powershell -windowstyle hidden -command -", "w")
-  ps:write("$DesktopPath = [Environment]::GetFolderPath('Desktop');$FullPath = (-join($DesktopPath, "\", "..shortcut_name.."));$ws = New-Object -ComObject WScript.Shell;$s = $ws.CreateShortcut($FullPath);$s.TargetPath = '"..video_path.."';$s.Save()")
+  ps:write("$DesktopPath = [Environment]::GetFolderPath('Desktop');$FullPath = (-join($DesktopPath, '\\', '"..shortcut_name.."'));$ws = New-Object -ComObject WScript.Shell;$s = $ws.CreateShortcut($FullPath);$s.TargetPath = '"..video_path.."';$s.Save()")
   ps:close()
 end
 
